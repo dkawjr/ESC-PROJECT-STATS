@@ -5,7 +5,7 @@ import platform
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.append(str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "src"))
 
 from nows_esc.report import generate_results_markdown
 
@@ -14,6 +14,7 @@ def main() -> None:
     root = ROOT
     generate_results_markdown(
         root / "results" / "tables" / "table2_primary_outcomes_final.csv",
+        root / "data" / "interim" / "cleaned_wide.csv",
         root / "manuscript" / "results.md",
     )
     session = "\n".join(
