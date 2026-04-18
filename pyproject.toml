@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nows-esc-analysis"
+version = "0.1.0"
+description = "Reproducible NOWS-ESC paired analysis pipeline"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "numpy==2.2.6",
+  "pandas==2.3.0",
+  "scipy==1.15.3",
+  "openpyxl==3.1.5",
+  "pyarrow==20.0.0",
+  "statsmodels==0.14.4",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.3.5",
+  "pytest-cov==5.0.0",
+  "ruff==0.11.12",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-xvs --cov=src/nows_esc --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B"]
