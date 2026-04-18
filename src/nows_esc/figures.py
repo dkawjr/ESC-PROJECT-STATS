@@ -11,10 +11,33 @@ import seaborn as sns
 from .scales import attitude_items_rev, comfort_items, knowledge_items
 
 
+def _make_svg_github_friendly(path: Path) -> None:
+    """Strip SVG headers that can break GitHub preview rendering."""
+    text = path.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    cleaned: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if line.startswith("<!DOCTYPE svg"):
+            i += 2
+            continue
+        if line.strip().startswith("<metadata>"):
+            while i < len(lines) and "</metadata>" not in lines[i]:
+                i += 1
+            i += 1
+            continue
+        cleaned.append(line)
+        i += 1
+    path.write_text("\n".join(cleaned) + "\n", encoding="utf-8")
+
+
 def _save_all(fig: plt.Figure, stem: Path) -> None:
     stem.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(stem.with_suffix(".png"), dpi=600, bbox_inches="tight")
-    fig.savefig(stem.with_suffix(".svg"), bbox_inches="tight")
+    svg_path = stem.with_suffix(".svg")
+    fig.savefig(svg_path, bbox_inches="tight")
+    _make_svg_github_friendly(svg_path)
     fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")
     plt.close(fig)
 
