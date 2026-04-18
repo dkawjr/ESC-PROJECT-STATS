@@ -4,6 +4,21 @@ This repository contains a fully reproducible paired pre-post analysis pipeline 
 
 Headline result: item-level and domain-level results are generated end-to-end from the raw workbook, with strongest paired improvements observed in comfort domain metrics, and all core outputs are reproducible by rerunning the scripts and tests.
 
+## Start Here (Share-Friendly)
+
+If you are opening this repo in Claude or another coding assistant, start with this prompt:
+
+1. "Read `README.md` and summarize the project in 5 bullets."
+2. "Show me how to run the analysis pipeline on Windows PowerShell."
+3. "Walk me through `analyses/01_clean_and_audit.py` to `analyses/09_manuscript_numbers.py` in order."
+4. "Explain how each main p-value is validated by tests in `tests/`."
+5. "Point me to the final outputs in `results/tables/`, `results/figures/`, and `manuscript/results.md`."
+
+Human quick-start:
+- Read `manuscript/results.md` for plain-language output.
+- Open `results/figures/*.png` for visual results.
+- Open `results/tables/` for manuscript-ready tables.
+
 ## Run Instructions
 
 ```bash
@@ -25,7 +40,7 @@ On Windows PowerShell where `make` is not installed, run scripts in `analyses/` 
 - `analyses/` - numbered executable pipeline scripts.
 - `tests/` - formula-level and cross-check tests.
 - `results/tables/` - manuscript-grade table outputs (`csv`, `tex`, `docx`).
-- `results/figures/` - figure outputs (`png`, `svg`, `pdf`).
+- `results/figures/` - figure outputs (`png`).
 - `results/logs/` - cleaning audit, run logs, session metadata, transcript reconciliation.
 - `manuscript/` - methods/results/SAP/checklist/limitations markdown.
 - `docs/proofs/` - derivation notes for primary tests and effect sizes.
