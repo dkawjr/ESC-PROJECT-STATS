@@ -7,8 +7,11 @@ all:
 	$(PYTHON) analyses/02_descriptives.py
 	$(PYTHON) analyses/03_primary_tests.py
 	$(PYTHON) analyses/04_effect_sizes_and_cis.py
+	$(PYTHON) analyses/05_reliability.py
+	$(PYTHON) analyses/06_sensitivity.py
 	$(PYTHON) analyses/07_multiple_comparisons.py
 	$(PYTHON) analyses/08_tables_and_figures.py
+	$(PYTHON) analyses/09_manuscript_numbers.py
 
 test:
 	$(PYTHON) -m pytest

@@ -20,6 +20,15 @@ def main() -> None:
     codebook = build_codebook(key_df)
     reverse_map = parse_reverse_map(key_df)
     save_json(codebook, root / "data" / "interim" / "codebook.json")
+    workbook_summary = {
+        name: {
+            "rows": int(df.shape[0]),
+            "cols": int(df.shape[1]),
+            "columns": [str(c) for c in df.columns],
+        }
+        for name, df in sheets.items()
+    }
+    save_json(workbook_summary, root / "data" / "interim" / "workbook_summary.json")
     save_json(reverse_map, root / "data" / "interim" / "reverse_map.json")
 
     coerced = coerce_types(data_df)
@@ -33,6 +42,7 @@ def main() -> None:
 
     audit = missingness_audit(data_df)
     save_json(audit, root / "results" / "logs" / "cleaning_audit.json")
+    (root / "results" / "logs" / "pipeline_run.log").write_text("step01_complete\n", encoding="utf-8")
     print("clean_and_audit complete")
 
 

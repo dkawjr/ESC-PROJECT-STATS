@@ -8,5 +8,3 @@ htmlcov/
 *.egg-info/
 data/interim/
 data/processed/
-results/
-!results/.gitkeep

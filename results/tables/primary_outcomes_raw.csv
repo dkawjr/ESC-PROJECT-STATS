@@ -1,0 +1,18 @@
+family,outcome,test,statistic,p_exact,p_mid,effect_size,effect_ci_low,effect_ci_high,n,hl_delta
+knowledge_items,Knowledge: Question 5,Exact McNemar,1.0,1.0,0.625,1.6666666666666667,0.2408802278292618,13.795966619049318,22,
+knowledge_items,Knowledge: Question 6,Exact McNemar,1.0,0.625,0.375,0.4285714285714286,0.05568188900721429,2.5263161086817547,22,
+knowledge_items,Knowledge: Question 7,Exact McNemar,0.0,0.0009765625,0.00048828125,0.043478260869565216,0.0021120445626859304,0.35989381728770403,22,
+knowledge_items,Knowledge: Question 8,Exact McNemar,0.0,0.5,0.25,0.19999999999999998,0.00847498034911153,2.4199518933533923,22,
+knowledge_items,Knowledge: Question 9,Exact McNemar,1.0,1.0,0.5,1.0,0.10411753745392764,9.604529884722862,22,
+comfort_items,Pre Simulation Comfort: 11a,Wilcoxon (pratt),,,,1.0,1.0,3.887500000000003,20,2.0
+comfort_items,Pre Simulation Comfort: 11b,Wilcoxon (pratt),,,,1.0,1.5,4.0,20,3.0
+comfort_items,Pre Simulation Comfort: 11c,Wilcoxon (pratt),,,,1.0,1.0,3.5,20,2.0
+comfort_items,Pre Simulation Comfort: 11d,Wilcoxon (pratt),,,,1.0,0.5,3.387500000000003,20,2.0
+attitude_items,Pre Simulation Attitude: 12a,Wilcoxon (wilcox),,,,0.6,-0.8874999999999997,3.0,20,1.0
+attitude_items,Pre Simulation Attitude: 12b,Wilcoxon (wilcox),,,,0.8,-1.0,1.0,20,0.5
+attitude_items,Pre Simulation Attitude: 12c,Wilcoxon (wilcox),,,,1.0,0.0,2.0,20,0.5
+attitude_items,Pre Simulation Attitude: 12d,Wilcoxon (wilcox),,,,0.6923076923076923,-1.0,2.0,20,0.5
+attitude_items,Pre Simulation Attitude: 12e,Wilcoxon (wilcox),,,,0.5,-1.0,2.0,20,0.0
+domain_primary,knowledge_total,Wilcoxon exact/auto,13.0,0.016578175190099975,0.016578175190099975,0.8461538461538461,-1.5,1.5,23,0.5
+domain_primary,comfort_domain,Wilcoxon exact/auto,2.0,3.4473337605275584e-05,3.4473337605275584e-05,0.9130434782608695,1.0,14.5625,23,9.0
+domain_primary,attitude_domain,Wilcoxon exact/auto,73.0,0.23079854131809951,0.23079854131809951,0.5,-13.0625,6.5,23,2.0

@@ -1,0 +1,3 @@
+# Methods
+
+We analyzed paired pre-post survey data from a single-arm educational simulation study on the NOWS Eat-Sleep-Console approach (n=23). Binary knowledge outcomes (Q5-Q9) were tested with exact McNemar tests, and ordinal or summed paired outcomes were tested with Wilcoxon signed-rank methods, with sensitivity checks using paired t-tests and sign-based procedures. Reverse-scoring for attitude items was parsed programmatically from the Key worksheet text. Missingness was audited per participant and per variable, and conclusions were checked with sensitivity analyses. Randomized procedures used fixed seed 20260418.

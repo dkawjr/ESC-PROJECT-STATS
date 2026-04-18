@@ -1,24 +1,58 @@
 # NOWS-ESC Analysis
 
-Reproducible analysis pipeline for a paired pre-post educational simulation study on the Eat-Sleep-Console method for neonatal opioid withdrawal syndrome (NOWS-ESC), with 23 participants and source data in an Excel workbook.
+This repository contains a fully reproducible paired pre-post analysis pipeline for an educational simulation study on the Eat-Sleep-Console approach for Neonatal Opioid Withdrawal Syndrome (NOWS-ESC), with one participant row per response and prespecified paired outcome analyses.
 
-## Quick Start
+Headline result: item-level and domain-level results are generated end-to-end from the raw workbook, with strongest paired improvements observed in comfort domain metrics, and all core outputs are reproducible by rerunning the scripts and tests.
+
+## Run Instructions
 
 ```bash
 python -m venv .venv
 . .venv/Scripts/activate
 pip install -e ".[dev]"
 make all
+make test
 ```
 
-## Pipeline Outputs
+On Windows PowerShell where `make` is not installed, run scripts in `analyses/` sequentially.
 
-- Cleaned datasets in `data/interim/` and `data/processed/`
-- Analysis tables in `results/tables/`
-- Audit logs in `results/logs/`
+## Repository Map
 
-## Reproducibility Notes
+- `data/raw/` - untouched input workbook copy used by pipeline.
+- `data/interim/` - cleaned wide and long intermediate artifacts.
+- `data/processed/` - final analysis-ready tabular outputs.
+- `src/nows_esc/` - package modules for I/O, cleaning, stats, tables, figures, and report rendering.
+- `analyses/` - numbered executable pipeline scripts.
+- `tests/` - formula-level and cross-check tests.
+- `results/tables/` - manuscript-grade table outputs (`csv`, `tex`, `docx`).
+- `results/figures/` - figure outputs (`png`, `svg`, `pdf`).
+- `results/logs/` - cleaning audit, run logs, session metadata, transcript reconciliation.
+- `manuscript/` - methods/results/SAP/checklist/limitations markdown.
+- `docs/proofs/` - derivation notes for primary tests and effect sizes.
 
-- Global random seed: `20260418`
-- Raw input workbook is copied unchanged to `data/raw/NOWS_data__1_.xlsx`
-- Knowledge paired analyses use Q5-Q9 only, Q10 is treated as prior-training indicator
+## Data Citation and Ethics
+
+- Source workbook filename: `NOWS_data__1_.xlsx`
+- Study topic: NOWS-ESC educational simulation analysis dataset
+- IRB placeholder: `IRB-TO-BE-INSERTED`
+
+## Reproducibility Hash
+
+- `sha256(data/raw/NOWS_data__1_.xlsx)`:
+  - `49dc4b5d10c166dd21a9ed95da4de15027ef33d38d126768559dc09a7b43e7f7`
+
+## P-value Traceability
+
+| Outcome | p-value source script | verification test |
+|---|---|---|
+| Knowledge Q5-Q9 exact McNemar | `analyses/03_primary_tests.py` | `tests/test_mcnemar_hand.py` |
+| Knowledge total Wilcoxon | `analyses/03_primary_tests.py` | `tests/test_against_scipy.py` |
+| Comfort items/domain Wilcoxon | `analyses/03_primary_tests.py` | `tests/test_wilcoxon_hand.py` |
+| Attitude items/domain Wilcoxon | `analyses/03_primary_tests.py` | `tests/test_against_scipy.py` |
+| Family-wise adjusted p-values | `analyses/07_multiple_comparisons.py` | `tests/test_stats_additional.py` |
+
+## Additional Notes
+
+- Global seed is fixed at `20260418`.
+- Reverse-scoring is parsed from Key sheet text, not hardcoded.
+- Knowledge primary item set is Q5 through Q9 only; Q10 is prior-training indicator.
